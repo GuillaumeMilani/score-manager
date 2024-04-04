@@ -7,6 +7,7 @@ import com.github.guillaumemilani.scoremanagerbackend.mapper.ScoreDtoMapper;
 import com.github.guillaumemilani.scoremanagerbackend.repository.ScoreRepository;
 import com.github.guillaumemilani.scoremanagerbackend.repository.ScoreSpecs;
 import lombok.AllArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +20,7 @@ public class ScoresController implements ScoresApi {
 
     @Override
     public ResponseEntity<com.github.guillaumemilani.scoremanagerbackend.api.model.ScoreDto> addScore(com.github.guillaumemilani.scoremanagerbackend.api.model.ScoreDto score) {
-        return null;
+        return ResponseEntity.status(HttpStatus.CREATED).body(MAPPER.toDto(scoreRepository.save(MAPPER.toScore(score))));
     }
 
     @Override

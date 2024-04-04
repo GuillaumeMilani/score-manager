@@ -11,7 +11,9 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
+import static org.assertj.core.api.AssertionsForInterfaceTypes.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -54,5 +56,21 @@ public class ScoreTests {
                 )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.content[0].title").value("Devil's Tower"));
+    }
+
+    @Test
+    void shouldCreateScore() throws Exception {
+        assertThat(scoreRepository.findAll()).extracting(Score::getTitle).doesNotContain("Devil's Tower");
+
+        this.mockMvc.perform(post("/scores")
+                        .content("{\"title\": \"Devil's Tower\"}")
+                        .contentType("application/json")
+                )
+                .andExpect(status().isCreated());
+
+        var devils = new Score();
+        devils.setTitle("Devil's Tower");
+
+        assertThat(scoreRepository.findAll()).extracting(Score::getTitle).contains("Devil's Tower");
     }
 }

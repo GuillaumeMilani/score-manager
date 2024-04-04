@@ -9,11 +9,16 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatInputModule} from "@angular/material/input";
 import {MinuteSecondsPipe} from "../pipes/minutes-seconds.pipe";
+import {MatButtonModule} from "@angular/material/button";
+import {MatIconModule} from "@angular/material/icon";
+import { ScoresFormComponent } from './scores-form/scores-form.component';
+import {MatCardModule} from "@angular/material/card";
 
 
 @NgModule({
   declarations: [
-    ScoresListComponent
+    ScoresListComponent,
+    ScoresFormComponent
   ],
   imports: [
     CommonModule,
@@ -24,7 +29,10 @@ import {MinuteSecondsPipe} from "../pipes/minutes-seconds.pipe";
     FormsModule,
     MatInputModule,
     ReactiveFormsModule,
-    MinuteSecondsPipe
+    MinuteSecondsPipe,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule
   ]
 })
 export class ScoresModule {
