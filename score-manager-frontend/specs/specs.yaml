@@ -13,6 +13,37 @@ paths:
         - scores
       summary: Get all scores
       operationId: getAllScores
+      parameters:
+        - name: page
+          in: query
+          description: Page number
+          required: false
+          schema:
+            type: integer
+        - name: size
+          in: query
+          description: Page size
+          required: false
+          schema:
+            type: integer
+        - name: sort
+          in: query
+          description: Sort
+          required: false
+          schema:
+            type: string
+        - name: direction
+          in: query
+          description: Direction
+          required: false
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: Search
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -90,6 +121,12 @@ components:
           format: int64
         title:
           type: string
+        composer:
+          type: string
+        duration:
+          type: integer
+        year:
+          type: integer
       required:
         - title
     Scores:

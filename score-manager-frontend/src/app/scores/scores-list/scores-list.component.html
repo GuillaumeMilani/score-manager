@@ -1,1 +1,39 @@
-<p>scores-list works!</p>
+<!-- Search field -->
+<mat-form-field>
+  <input matInput [formControl]="searchForm" placeholder="Search">
+</mat-form-field>
+<!-- Mat-table to display the scores -->
+<mat-table [dataSource]="dataSource" matSort matSortActive="title" matSortDirection="asc">
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> No.</mat-header-cell>
+    <mat-cell *matCellDef="let element"> {{ element.position }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Title</mat-header-cell>
+    <mat-cell *matCellDef="let score"> {{ score.title }}</mat-cell>
+  </ng-container>
+
+  <!-- Composer column -->
+  <ng-container matColumnDef="composer">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Composer</mat-header-cell>
+    <mat-cell *matCellDef="let score"> {{ score.composer }}</mat-cell>
+  </ng-container>
+
+  <!-- Duration column -->
+  <ng-container matColumnDef="durationSeconds">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Duration</mat-header-cell>
+    <mat-cell *matCellDef="let score"> {{ score.duration | minutesSeconds }}</mat-cell>
+  </ng-container>
+
+  <!-- Year column -->
+  <ng-container matColumnDef="year">
+    <mat-header-cell *matHeaderCellDef mat-sort-header> Year</mat-header-cell>
+    <mat-cell *matCellDef="let score"> {{ score.year }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+<mat-paginator [pageSizeOptions]="[10, 25, 100]" [length]="(dataSource.total$ | async) || 0"></mat-paginator>

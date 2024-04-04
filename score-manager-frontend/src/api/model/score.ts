@@ -14,5 +14,8 @@
 export interface Score { 
     id?: number;
     title: string;
+    composer?: string;
+    duration?: number;
+    year?: number;
 }
 

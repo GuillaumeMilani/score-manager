@@ -9,8 +9,41 @@ servers:
 paths:
   /scores:
     get:
+      tags:
+        - scores
       summary: Get all scores
       operationId: getAllScores
+      parameters:
+        - name: page
+          in: query
+          description: Page number
+          required: false
+          schema:
+            type: integer
+        - name: size
+          in: query
+          description: Page size
+          required: false
+          schema:
+            type: integer
+        - name: sort
+          in: query
+          description: Sort
+          required: false
+          schema:
+            type: string
+        - name: direction
+          in: query
+          description: Direction
+          required: false
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: Search
+          required: false
+          schema:
+            type: string
       responses:
         '200':
           description: OK
@@ -19,6 +52,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Scores'
     post:
+      tags:
+        - scores
       summary: Add a new score
       operationId: addScore
       requestBody:
@@ -36,6 +71,8 @@ paths:
                 $ref: '#/components/schemas/Score'
   /instruments:
     get:
+      tags:
+        - instruments
       summary: Get all instruments
       operationId: getAllInstruments
       responses:
@@ -46,6 +83,8 @@ paths:
               schema:
                 $ref: '#/components/schemas/Instruments'
     post:
+      tags:
+        - instruments
       summary: Add a new instrument
       operationId: addInstrument
       requestBody:
@@ -82,6 +121,12 @@ components:
           format: int64
         title:
           type: string
+        composer:
+          type: string
+        duration:
+          type: integer
+        year:
+          type: integer
       required:
         - title
     Scores:
