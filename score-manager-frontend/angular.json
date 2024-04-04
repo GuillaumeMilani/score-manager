@@ -69,10 +69,10 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "score-manager-frontend:build:production"
+              "buildTarget": "score-manager-frontend:build:production"
             },
             "development": {
-              "browserTarget": "score-manager-frontend:build:development"
+              "buildTarget": "score-manager-frontend:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -80,7 +80,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "score-manager-frontend:build"
+            "buildTarget": "score-manager-frontend:build"
           }
         },
         "test": {

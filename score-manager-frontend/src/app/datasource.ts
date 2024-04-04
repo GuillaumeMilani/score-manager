@@ -1,6 +1,7 @@
-import {MatTableDataSource, MatTableDataSourcePaginator} from "@angular/material/table";
+import {MatTableDataSource} from "@angular/material/table";
 import {BehaviorSubject, catchError, finalize, Observable} from "rxjs";
 import {MatSort} from "@angular/material/sort";
+import {MatPaginator} from "@angular/material/paginator";
 
 export interface Page<T> {
   content?: T[];
@@ -48,7 +49,7 @@ export abstract class Datasource<T> extends MatTableDataSource<T> {
     this.loadData(super.sort, super.paginator, super.filter);
   }
 
-  loadData(sort: MatSort | null, paginator: MatTableDataSourcePaginator | null, filter: string) {
+  loadData(sort: MatSort | null, paginator: MatPaginator | null, filter: string) {
     this.loadingSubject.next(true);
     this.load(paginator?.pageIndex, paginator?.pageSize, sort?.active, sort?.direction || 'asc', filter || undefined)
       .pipe(
