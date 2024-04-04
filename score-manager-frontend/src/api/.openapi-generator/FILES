@@ -14,6 +14,7 @@ model/instruments.ts
 model/models.ts
 model/page.ts
 model/score.ts
+model/scoreForm.ts
 model/scores.ts
 param.ts
 variables.ts

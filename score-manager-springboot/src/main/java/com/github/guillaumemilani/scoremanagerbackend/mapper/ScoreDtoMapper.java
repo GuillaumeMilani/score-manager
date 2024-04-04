@@ -17,5 +17,5 @@ public interface ScoreDtoMapper {
     com.github.guillaumemilani.scoremanagerbackend.api.model.ScoresDto toScores(Page<Score> scores);
 
     @Mapping(target = "durationSeconds", source = "duration")
-    Score toScore(ScoreDto dto);
+    Score toScore(com.github.guillaumemilani.scoremanagerbackend.api.model.ScoreFormDto dto);
 }

@@ -13,6 +13,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatIconModule} from "@angular/material/icon";
 import { ScoresFormComponent } from './scores-form/scores-form.component';
 import {MatCardModule} from "@angular/material/card";
+import {DurationSecondsComponent} from "./scores-form/duration-seconds.component";
 
 
 @NgModule({
@@ -20,20 +21,21 @@ import {MatCardModule} from "@angular/material/card";
     ScoresListComponent,
     ScoresFormComponent
   ],
-  imports: [
-    CommonModule,
-    ScoresRoutingModule,
-    MatTableModule,
-    MatSortModule,
-    MatPaginatorModule,
-    FormsModule,
-    MatInputModule,
-    ReactiveFormsModule,
-    MinuteSecondsPipe,
-    MatButtonModule,
-    MatIconModule,
-    MatCardModule
-  ]
+    imports: [
+        CommonModule,
+        ScoresRoutingModule,
+        MatTableModule,
+        MatSortModule,
+        MatPaginatorModule,
+        FormsModule,
+        MatInputModule,
+        ReactiveFormsModule,
+        MinuteSecondsPipe,
+        MatButtonModule,
+        MatIconModule,
+        MatCardModule,
+        DurationSecondsComponent
+    ]
 })
 export class ScoresModule {
 }

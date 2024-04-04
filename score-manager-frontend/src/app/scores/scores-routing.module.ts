@@ -11,6 +11,10 @@ const routes: Routes = [
   {
     path: 'create',
     component: ScoresFormComponent
+  },
+  {
+    path: ':id',
+    component: ScoresFormComponent
   }
 ];
 

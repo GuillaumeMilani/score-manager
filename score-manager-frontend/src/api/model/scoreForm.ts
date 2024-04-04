@@ -11,8 +11,8 @@
  */
 
 
-export interface Score { 
-    id: number;
+export interface ScoreForm { 
+    id?: number;
     title: string;
     composer?: string;
     duration?: number;

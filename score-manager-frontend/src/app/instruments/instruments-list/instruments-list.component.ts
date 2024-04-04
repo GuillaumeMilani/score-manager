@@ -1,27 +1,27 @@
 import {AfterViewInit, Component, ViewChild} from '@angular/core';
-import {ScoresService} from "../../../api";
-import {ScoresDatasource} from "./scores-datasource";
+import {InstrumentsService} from "../../../api";
+import {InstrumentsDatasource} from "./instruments-datasource";
 import {MatSort} from "@angular/material/sort";
 import {MatPaginator} from "@angular/material/paginator";
 import {FormControl} from "@angular/forms";
 import {debounceTime} from "rxjs";
 
 @Component({
-  selector: 'app-scores-list',
-  templateUrl: './scores-list.component.html',
-  styleUrls: ['./scores-list.component.scss']
+  selector: 'app-instruments-list',
+  templateUrl: './instruments-list.component.html',
+  styleUrls: ['./instruments-list.component.scss']
 })
-export class ScoresListComponent implements AfterViewInit {
-  dataSource: ScoresDatasource;
-  displayedColumns = ['title', 'composer', 'durationSeconds', 'year', 'actions'];
+export class InstrumentsListComponent implements AfterViewInit {
+  dataSource: InstrumentsDatasource;
+  displayedColumns = ['name', 'actions'];
 
   @ViewChild(MatSort) sort!: MatSort;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   searchForm = new FormControl<string>('');
 
-  constructor(scoresService: ScoresService) {
-    this.dataSource = new ScoresDatasource(scoresService);
+  constructor(instrumentsService: InstrumentsService) {
+    this.dataSource = new InstrumentsDatasource(instrumentsService);
     this.searchForm.valueChanges
       .pipe(debounceTime(300))
       .subscribe(search => this.search(search || ''));
