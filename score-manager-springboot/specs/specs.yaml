@@ -17,13 +17,13 @@ paths:
         - name: page
           in: query
           description: Page number
-          required: false
+          required: true
           schema:
             type: integer
         - name: size
           in: query
           description: Page size
-          required: false
+          required: true
           schema:
             type: integer
         - name: sort

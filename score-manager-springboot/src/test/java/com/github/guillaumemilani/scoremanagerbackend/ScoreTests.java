@@ -35,7 +35,12 @@ public class ScoreTests {
 
     @Test
     void shouldListScores() throws Exception {
-        mockMvc.perform(get("/scores")).andExpect(status().isOk());
+
+        mockMvc.perform(get("/scores")
+                        .queryParam("page", "0")
+                        .queryParam("size", "10")
+                )
+                .andExpect(status().isOk());
         var instrument = new Instrument();
         instrument.setName("Trombone");
         instrumentRepository.save(instrument);
@@ -43,7 +48,10 @@ public class ScoreTests {
         score.setTitle("Devil's Tower");
         scoreRepository.save(score);
 
-        this.mockMvc.perform(get("/scores"))
+        this.mockMvc.perform(get("/scores")
+                        .queryParam("page", "0")
+                        .queryParam("size", "10")
+                )
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.content[0].title").value("Devil's Tower"));
     }
